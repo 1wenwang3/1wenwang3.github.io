@@ -52,13 +52,33 @@ td:first-child{font-weight:bold}
 footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
 @media(max-width:900px){nav{align-items:flex-start;flex-direction:column}nav div:last-child{display:flex;flex-wrap:wrap;gap:8px}nav a{margin-left:0;margin-right:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){section{padding:60px 6%}.grid,.variables,.team{grid-template-columns:1fr}.step{grid-template-columns:1fr;gap:4px}h1{letter-spacing:-1.5px}.hero{padding:65px 6%}.hero p{font-size:18px}}
+
+/* Pilot study: scoped additions that reuse the original visual language. */
+section[id]{scroll-margin-top:125px}
+nav>div:last-child{display:flex;flex-wrap:wrap;justify-content:flex-end;row-gap:7px}
+nav a:focus-visible,.matrix:focus-visible{outline:2px solid #c2412d;outline-offset:4px}
+.pilot-section{background:#f0e9e1;border-top:1px solid #ddd8cf;border-bottom:1px solid #ddd8cf}
+.pilot-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:30px 0 20px}
+.pilot-stats>div{border-top:3px solid #c2412d;background:#fff;padding:22px;border-radius:0 0 14px 14px}
+.pilot-stats strong{display:block;font-size:32px;color:#c2412d;line-height:1.2;margin-bottom:8px}
+.pilot-stats span{display:block;font-size:14px;color:#5b6470}
+.pilot-note{margin-top:20px;max-width:980px}
+.pilot-subheading{margin-top:42px}
+.pilot-subheading+.variables{margin-top:20px}
+.pilot-table{min-width:640px}
+.pilot-table caption{text-align:left;caption-side:bottom;padding:13px 2px 2px;font-size:14px;color:#5b6470}
+.pilot-table tbody th{background:#f6f3ef;color:#1f2937;font-size:14px;min-width:100px}
+.pilot-table td:first-child{font-weight:normal}
+.pilot-section .card p,.pilot-section .variable p,.pilot-section .step p{color:#59636e}
+@media(max-width:900px){nav>div:last-child{justify-content:flex-start}.pilot-stats{grid-template-columns:repeat(2,minmax(0,1fr))}section[id]{scroll-margin-top:175px}}
+@media(max-width:600px){.pilot-stats{gap:10px}.pilot-stats>div{padding:16px}.pilot-stats strong{font-size:26px}section[id]{scroll-margin-top:210px}}
 </style>
 </head>
 <body>
 <nav>
   <div class="logo">XJTLU · eHall AI</div>
   <div>
-    <a href="#about">Overview</a><a href="#questions">Research Questions</a><a href="#participants">Participants</a>
+    <a href="#about">Overview</a><a href="#questions">Research Questions</a><a href="#participants">Participants</a><a href="#pilot">Pilot Study</a>
     <a href="#design">Design</a><a href="#measures">Measures</a><a href="#tasks">Tasks</a><a href="#procedure">Procedure</a><a href="#data">Data</a><a href="#team">Team</a>
   </div>
 </nav>
@@ -106,13 +126,114 @@ footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
   <p class="intro">The target population is the 92 students in AIAT first-year postgraduate Class 1, including students from Human-Computer Interaction (HCI), Social Networks, and Applied Information.</p>
   <div class="variables">
     <div class="variable"><div class="iv">RECRUITMENT</div><h3>Invite the whole class</h3><p>Use a census invitation: invite all 92 students and let participation remain voluntary. The final sample will consist of those who consent and complete the relevant study activities.</p><ul><li>Eligible members of the target class</li><li>Able to understand the task instructions</li><li>Willing to participate and access the required eHall pages</li></ul></div>
-    <div class="variable"><div class="iv">SAMPLE PLAN</div><h3>Pilot, experiment, interviews</h3><p>Recommended planning targets—not guaranteed final sample sizes:</p><ul><li><b>Pilot:</b> 5–8 students</li><li><b>Main experiment:</b> invite all 92 students</li><li><b>Interviews:</b> 12–15 diverse participants</li></ul></div>
+    <div class="variable"><div class="iv">SAMPLE PLAN</div><h3>Pilot, experiment, interviews</h3><p>Recommended planning targets—not guaranteed final sample sizes:</p><ul><li><b>Current pilot:</b> 8 SIP campus postgraduate students (see Pilot Study Design)</li><li><b>Main experiment:</b> invite all 92 students</li><li><b>Interviews:</b> 12–15 diverse participants</li></ul></div>
   </div>
   <p class="intro" style="margin-top:24px">During analysis, describe differences by programme, prior AI experience, and familiarity with eHall. Report the numbers invited, consented, completing the experiment, providing valid questionnaires, and interviewed. If resources require convenience sampling stratified by programme, clearly report this limitation.</p>
 </section>
 
+<section id="pilot" class="pilot-section" aria-labelledby="pilot-heading">
+  <div class="section-label">04 · PILOT STUDY DESIGN</div>
+  <h2 id="pilot-heading">A small-scale rehearsal before the main study</h2>
+  <p class="intro">This pilot compares eHall AI-assisted retrieval with traditional official-information retrieval for campus tasks at XJTLU's SIP (Suzhou Industrial Park) campus. It will check task difficulty, session flow, and recording procedures while collecting genuine preliminary evidence on efficiency, answer correctness, user experience, and natural verification behaviour.</p>
+  <div class="pilot-stats" aria-label="Pilot study at a glance">
+    <div><strong>8</strong><span>volunteer postgraduates</span></div>
+    <div><strong>4</strong><span>tasks per participant</span></div>
+    <div><strong>30–35 min</strong><span>planned session duration</span></div>
+    <div><strong>Up to 32</strong><span>task records if all take part</span></div>
+  </div>
+  <p class="small pilot-note"><b>Planned protocol, not findings.</b> This section describes the current eight-person pilot. The later sections retain the broader proposed main-study framework; its additional measures, task examples, and longer interviews are not automatically part of this pilot.</p>
+
+  <div class="variables">
+    <div class="variable"><div class="iv">PARTICIPANTS & RECRUITMENT</div><h3>Eight SIP campus postgraduates</h3><p>Recruit eight current SIP campus postgraduate students voluntarily, with varied prior eHall experience. If the original AIAT first-year Class 1 population remains the target, recruit eligible SIP students within that class; report any expansion of the recruitment scope.</p><ul><li>Do not ask participants to learn the tasks in advance.</li><li>Participation does not affect grades or university services; the study evaluates retrieval methods, not individual ability.</li><li>Research-team rehearsal data does not count towards the eight participants.</li></ul></div>
+    <div class="variable"><div class="iv">PREPARATION & CONSISTENCY</div><h3>Verify materials before recruitment</h3><p>Check the four official answers, retain sources, verification dates, and page copies, and rehearse both retrieval methods. Keep task wording and scoring rules consistent throughout this pilot.</p><ul><li>Prepare information sheets, consent forms, questionnaires, answer forms, and researcher logs.</li><li>Standardise the computer, browser, and network where feasible; complete required login before timing.</li><li>Define storage, access, retention, and withdrawal arrangements and complete the required course research procedures.</li><li>Obtain separate screen-recording consent; use manual observation if recording is declined.</li></ul></div>
+  </div>
+
+  <h3 class="pilot-subheading">Two retrieval conditions</h3>
+  <div class="variables">
+    <div class="variable"><div class="iv">CONDITION N · TRADITIONAL RETRIEVAL</div><h3>Official sources without AI</h3><p>Use official university websites, service guidance, and on-site search. Ordinary search engines may be used to locate official pages. Generative answers in search results, other chatbots, and help from other people are not allowed.</p></div>
+    <div class="variable"><div class="iv">CONDITION AI · EHALL AI-ASSISTED RETRIEVAL</div><h3>Ask eHall AI first</h3><p>Begin every task with a question to eHall AI. Follow-up questions and checking official webpages are allowed. Other AI tools and help from other people are not allowed. Use a fresh AI conversation for each task.</p></div>
+  </div>
+  <p class="small pilot-note">Both conditions have access to the same scope of official information. AI-condition time includes response generation, follow-up questions, and webpage checks. All tasks require written answers only: participants do not actually request certificates, reserve rooms, or make phone calls.</p>
+
+  <div class="matrix" role="region" aria-label="Pilot tasks and time limits" tabindex="0">
+    <h3>Two task sets, four concrete campus queries</h3>
+    <table class="pilot-table">
+      <caption>Task limits are starting values for the pilot. Any changes identified during internal rehearsal must be applied consistently before recruiting participants.</caption>
+      <thead><tr><th scope="col">Task</th><th scope="col">Type</th><th scope="col">Information to find: three scoring points</th><th scope="col">Limit</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">A1 · Set A</th><td>Fact finding</td><td>SIP Academic Affairs Office: location, reception hours, and contact telephone number.</td><td>3 min</td></tr>
+        <tr><th scope="row">A2 · Set A</th><td>Rules / procedure</td><td>SIP library group study rooms: booking entry point, daily booking limit, and maximum student usage duration.</td><td>5 min</td></tr>
+        <tr><th scope="row">B1 · Set B</th><td>Fact finding</td><td>SIP library user services: telephone number, email address, and staffed LibChat hours.</td><td>3 min</td></tr>
+        <tr><th scope="row">B2 · Set B</th><td>Rules / procedure</td><td>Electronic student-status certificate: application route, document category, and whether a fee is charged.</td><td>5 min</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small pilot-note">Each set takes up to eight minutes. The fact-finding task always precedes the rules/procedure task within a set, so this pilot will not isolate a causal effect of task type. Correct service details must be established from current official sources before testing.</p>
+
+  <div class="matrix" role="region" aria-label="Pilot counterbalancing allocation" tabindex="0">
+    <h3>Four balanced sequences, two participants each</h3>
+    <table class="pilot-table">
+      <caption>N = traditional retrieval; AI = eHall AI-assisted retrieval. Each participant completes every task once.</caption>
+      <thead><tr><th scope="col">Sequence</th><th scope="col">Stage 1</th><th scope="col">Stage 2</th><th scope="col">Planned n</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">1</th><td>N · A1 → A2</td><td>AI · B1 → B2</td><td>2</td></tr>
+        <tr><th scope="row">2</th><td>AI · A1 → A2</td><td>N · B1 → B2</td><td>2</td></tr>
+        <tr><th scope="row">3</th><td>N · B1 → B2</td><td>AI · A1 → A2</td><td>2</td></tr>
+        <tr><th scope="row">4</th><td>AI · B1 → B2</td><td>N · A1 → A2</td><td>2</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small pilot-note">Prepare eight allocation cards, two per sequence, and shuffle them in advance. After consent, assign the next card and log the anonymous participant ID and sequence. Do not reassign based on ability or preference. With all eight participants, four start with each method, four start with each set, and each task is attempted by four people in each condition.</p>
+
+  <h3 class="pilot-subheading">Session flow · approximately 30–35 minutes</h3>
+  <div class="procedure">
+    <div class="step"><div class="time">~3 min</div><div><h3>1. Information and consent</h3><p>Explain voluntary participation, the right to stop, data handling, and that answer correctness does not affect personal assessment.</p></div></div>
+    <div class="step"><div class="time">~2 min</div><div><h3>2. Background questionnaire</h3><p>Record SIP postgraduate and AIAT Class 1 eligibility, previous eHall AI use and use days in the past 30 days, other generative AI use, familiarity with official campus-information sources (1–5), prior experience of the four services, and usual first-choice retrieval method. Do not request names, student IDs, credentials, or remembered service answers.</p></div></div>
+    <div class="step"><div class="time">~2 min</div><div><h3>3. Familiarisation</h3><p>Explain the answer form, timer, and submission process using an unrelated practice task. Do not reveal answers to the study tasks.</p></div></div>
+    <div class="step"><div class="time">Up to 8 min</div><div><h3>4. First task set</h3><p>Present one task at a time under the assigned condition. After each final submission, collect an answer-confidence rating outside the task timer.</p></div></div>
+    <div class="step"><div class="time">~1 min</div><div><h3>5. First condition questionnaire</h3><p>Collect the four experience ratings for the method just used, referring only to that round's two tasks.</p></div></div>
+    <div class="step"><div class="time">~1 min</div><div><h3>6. Break and switch</h3><p>Close previous task pages and answers and clear the search state. Switch to the other method and the other task set.</p></div></div>
+    <div class="step"><div class="time">Up to 9 min</div><div><h3>7. Second task set and questionnaire</h3><p>Complete the other two tasks, collect confidence after each task, and repeat the same four experience items for the second condition.</p></div></div>
+    <div class="step"><div class="time">~4–5 min</div><div><h3>8. Short interview and debrief</h3><p>Ask about difficulty, trust, verification, method preference, and desired improvements. Provide the correct answers and research contact information. Confirm actual session duration during the pilot.</p></div></div>
+  </div>
+
+  <div class="baseline-box"><h3>Consistent moderation and timing</h3><p>“Please use the method assigned to this stage to complete the task on screen. Search in your usual way and submit when you think you have enough information; you may note anything you are unsure about. There is a time limit. When time is up, submit whatever you have.”</p><p>Start timing when the full task is visible and work is permitted; stop at the single final submission. Include normal page loading and AI response time. Record actual time and status for abandonment; at the limit, collect the available answer and mark it as timed out. Log technical failures and their duration without silently deleting or adjusting records. Moderators explain operating rules only; any accidental content hints must be recorded.</p></div>
+
+  <h3 class="pilot-subheading">Measures, scoring, and observation</h3>
+  <div class="grid">
+    <div class="card"><div class="card-number">PER TASK · OBJECTIVE OUTCOMES</div><h3>Time and content score</h3><p>Record elapsed seconds and score the answer against three verified points: one point each, for a total of 0–3. Full success means all three points are correct within the time limit. Retain partial scores; unresolved contradictory answers earn no credit for that point. Verified equivalent wording and valid official alternative contact details may receive credit.</p></div>
+    <div class="card"><div class="card-number">PER TASK · CONFIDENCE</div><h3>One rating after submission</h3><p>“How confident are you that the answer you just submitted is correct?” Use 1 = Not at all confident to 5 = Very confident. Collect this after timing stops and keep perceived correctness separate from independently scored correctness.</p></div>
+    <div class="card"><div class="card-number">OBSERVED BEHAVIOUR</div><h3>Opening is not verifying</h3><p>Record whether an official source was opened and, separately, whether official information was explicitly used to check an existing answer. Mark unclear verification as “Cannot determine”. Do not remind participants to verify before every task; ask verification questions after all tasks are finished.</p></div>
+  </div>
+  <div class="matrix" role="region" aria-label="Pilot condition questionnaire" tabindex="0">
+    <h3>The same four items after each condition</h3>
+    <table class="pilot-table">
+      <caption>Rate each statement from 1 = Strongly disagree to 5 = Strongly agree. Report items separately; do not label their sum as a validated usability score.</caption>
+      <thead><tr><th scope="col">Aspect</th><th scope="col">Statement</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Perceived efficiency</th><td>This method helped me find the information I needed efficiently.</td></tr>
+        <tr><th scope="row">Clarity</th><td>The information obtained through this method was easy to understand.<br><span class="small">Allow “Not applicable: no information was obtained that could be evaluated for clarity”.</span></td></tr>
+        <tr><th scope="row">Satisfaction</th><td>Overall, I am satisfied with this method.</td></tr>
+        <tr><th scope="row">Future use</th><td>I would use this method for similar campus-information tasks in the future.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="variables">
+    <div class="variable"><div class="iv">TASK-LEVEL RECORD</div><h3>One row per attempted task</h3><p>Log anonymous ID, allocation sequence, stage, task ID, condition, time, outcome status (submitted, timed out, abandoned, or technical exception), verbatim answer, content score, confidence, source-opening and verification observations, AI follow-up count where applicable, and moderator assistance or exceptions.</p><p style="margin-top:12px">Retain de-identified AI prompts and responses to distinguish output errors from interpretation errors. Two researchers should independently score all available answers, ideally with condition and timing hidden; preserve initial scores before resolving differences.</p></div>
+    <div class="variable"><div class="iv">POST-TASK INTERVIEW</div><h3>Neutral prompts, specific examples</h3><ul><li>Which task was hardest, and where did you get stuck?</li><li>How did you judge whether the information was trustworthy?</li><li>When did you check official sources, and why?</li><li>Which method better suited these tasks? Can you give an example?</li><li>If you could change one feature or step, what would you change?</li></ul><p style="margin-top:12px">Avoid leading questions that assume AI was faster or more trustworthy.</p></div>
+  </div>
+
+  <h3 class="pilot-subheading">Analysis and decisions for the next study</h3>
+  <div class="grid">
+    <div class="card"><div class="card-number">01 · WITHIN-PERSON SUMMARY</div><h3>Compare paired outcomes</h3><p>For each participant and condition, summarise time across two tasks, total content score (0–6), number of fully successful tasks (0–2), and each experience item. Show individual paired results alongside medians, ranges, and actual success counts.</p></div>
+    <div class="card"><div class="card-number">02 · DESCRIPTIVE INTERPRETATION</div><h3>Check feasibility and imbalance</h3><p>Inspect each task under both conditions for difficulty differences. Label timeouts, abandonment, and technical exceptions; do not present their times as successful completion times. Eight participants are the sample, not 32 independent participants. Statistical significance is not the primary aim.</p></div>
+    <div class="card"><div class="card-number">03 · PILOT DELIVERABLES</div><h3>Turn observations into revisions</h3><p>Report allocation and actual completion, up to 32 real task records, paired performance and experience, anonymised interview excerpts, and an “Issue → Impact on the study → Proposed revision” log. Date and version any mid-pilot changes, and explain differences before combining data.</p></div>
+  </div>
+  <div class="baseline-box"><h3>Error verification: observe naturally in this round</h3><p>The additional SIP-versus-Taicang Academic Affairs Office verification question is excluded because A1 may reveal the answer in advance, confounding verification with memory. Observe natural checking and error handling within the four main tasks instead. Any later independent verification task should use a new service, have its own verified answer key, and appear last.</p><p>Public reporting should contain aggregate results and anonymised excerpts. Keep consent records, personal details, and complete screen recordings private. Preliminary observations must come from collected data; do not present anticipated AI benefits as findings.</p></div>
+</section>
+
 <section id="design" class="light">
-  <div class="section-label">04 · EXPERIMENTAL DESIGN</div>
+  <div class="section-label">05 · EXPERIMENTAL DESIGN</div>
   <h2>Within-subject comparison: No AI vs With AI</h2>
   <p class="intro">Each participant experiences both information-retrieval conditions, allowing each person to serve as their own comparison. To reduce learning and carry-over effects, participants complete parallel task sets of comparable difficulty rather than repeating exactly the same questions.</p>
   <div class="variables">
@@ -134,7 +255,7 @@ footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
 </section>
 
 <section id="measures">
-  <div class="section-label">05 · VARIABLES & MEASURES</div>
+  <div class="section-label">06 · VARIABLES & MEASURES</div>
   <h2>What will we measure?</h2>
   <div class="grid">
     <div class="card"><div class="card-number">IV 01</div><h3>Information method</h3><p>Two levels: No AI and With AI.</p></div>
@@ -164,7 +285,7 @@ footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
 </section>
 
 <section id="tasks" class="light">
-  <div class="section-label">06 · TASK DESIGN & ERROR EVALUATION</div>
+  <div class="section-label">07 · TASK DESIGN & ERROR EVALUATION</div>
   <h2>Realistic, verifiable campus tasks</h2>
   <p class="intro">Each task should have a clear goal, observable actions, and a defensible answer key. The examples below are templates; before the study, the team must confirm the relevant service and official information are currently accessible.</p>
   <div class="grid">
@@ -190,7 +311,7 @@ footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
 </section>
 
 <section id="data">
-  <div class="section-label">07 · DATA COLLECTION & ANALYSIS</div>
+  <div class="section-label">08 · DATA COLLECTION & ANALYSIS</div>
   <h2>Combine behaviour, surveys, and interviews</h2>
   <div class="grid">
     <div class="card"><div class="card-number">01 · BEHAVIOURAL DATA</div><h3>Task-level records</h3><p>Completion time, answer correctness, task success, number of follow-up questions, verification behaviour, and interaction steps.</p></div>
@@ -225,7 +346,7 @@ footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
 </section>
 
 <section id="procedure" class="light">
-  <div class="section-label">08 · EXPERIMENTAL PROCEDURE</div>
+  <div class="section-label">09 · EXPERIMENTAL PROCEDURE</div>
   <h2>Approximately 31–41 minutes per participant</h2>
   <p class="intro">The main session includes two task conditions, short questionnaires, and a final overall survey. The optional interview is arranged separately and takes approximately 15–20 minutes.</p>
   <div class="procedure">
@@ -242,7 +363,7 @@ footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
 </section>
 
 <section>
-  <div class="section-label">09 · INTERVIEW GUIDE</div>
+  <div class="section-label">10 · INTERVIEW GUIDE</div>
   <h2>Understand why participants behaved as they did</h2>
   <div class="grid">
     <div class="card"><div class="card-number">SECTION 01</div><h3>Goals and expectations</h3><p>What campus information do you usually need? What did you expect eHall AI to do? Did the experience meet those expectations?</p></div>
@@ -254,7 +375,7 @@ footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
 </section>
 
 <section id="ethics" class="light">
-  <div class="section-label">10 · ETHICS & PRIVACY</div>
+  <div class="section-label">11 · ETHICS & PRIVACY</div>
   <h2>Voluntary participation and responsible data handling</h2>
   <div class="grid">
     <div class="card"><h3>Voluntary participation</h3><p>Participants may decline or stop without penalty and without impact on grades, relationships with staff, or access to university services. Recruitment should avoid pressure from classmates or anyone with assessment authority.</p></div>
@@ -268,7 +389,7 @@ footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
 </section>
 
 <section>
-  <div class="section-label">11 · QUALITY ASSURANCE & REPORTING</div>
+  <div class="section-label">12 · QUALITY ASSURANCE & REPORTING</div>
   <h2>From protocol to credible findings</h2>
   <div class="grid">
     <div class="card"><div class="card-number">01</div><h3>Verify the platform</h3><p>Log in to the current eHall AI page and confirm actual access, functions, and source-verification options.</p></div>
@@ -282,7 +403,7 @@ footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
 </section>
 
 <section id="team" class="light">
-  <div class="section-label">12 · PROJECT TEAM</div>
+  <div class="section-label">13 · PROJECT TEAM</div>
   <h2>Our team</h2>
   <p class="intro">eHall AI User Experience Evaluation · XJTLU</p>
   <div class="team">
