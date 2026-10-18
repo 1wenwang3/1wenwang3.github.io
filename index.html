@@ -61,6 +61,40 @@ td:first-child{font-weight:bold}
 footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
 @media(max-width:900px){nav{align-items:flex-start;flex-direction:column}nav div:last-child{display:flex;flex-wrap:wrap;gap:8px}nav a{margin-left:0;margin-right:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){section{padding:60px 6%}.grid,.variables,.team{grid-template-columns:1fr}.step{grid-template-columns:1fr;gap:4px}h1{letter-spacing:-1.5px}.hero{padding:65px 6%}.hero p{font-size:18px}}
+
+.pilot-chart-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:26px 0}
+.pilot-chart{background:#fff;border:1px solid #e5ddd7;border-radius:16px;padding:24px;min-width:0;margin:0}
+.pilot-chart.wide{grid-column:1/-1}
+.pilot-chart h4{font-size:20px;margin-bottom:5px;color:#253345}
+.pilot-chart svg{display:block;width:100%;height:auto;margin:16px 0 8px}
+.pilot-chart figcaption{font-size:13px;color:#596273;line-height:1.6}
+.chart-legend{display:flex;gap:22px;flex-wrap:wrap;font-size:14px;margin:20px 0}
+.chart-legend span{display:flex;align-items:center;gap:8px}
+.chart-legend i{display:inline-block;width:14px;height:14px;border-radius:3px;background:#c2412d}
+.chart-legend .traditional{background:#526a83}
+.pilot-takeaways{padding-left:22px}.pilot-takeaways li{margin:10px 0}
+@media(max-width:760px){.pilot-chart-grid{grid-template-columns:1fr}.pilot-chart{padding:16px}.pilot-chart.wide{grid-column:auto}}
+
+/* Click-to-enlarge chart viewer */
+.pilot-chart[data-zoom]{cursor:zoom-in;position:relative;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.pilot-chart[data-zoom]:hover{transform:translateY(-4px);box-shadow:0 14px 32px #25334515;border-color:#c2412d80}
+.pilot-chart[data-zoom]:focus-visible{outline:3px solid #c2412d;outline-offset:5px}
+.chart-zoom-hint{display:inline-flex;align-items:center;gap:7px;margin-top:14px;color:#a73424;font-size:13px;font-weight:bold}
+.chart-viewer{position:fixed;inset:0;margin:auto;width:min(1120px,94vw);max-width:94vw;max-height:92dvh;padding:0;border:0;border-radius:20px;background:#fff;color:#1f2937;box-shadow:0 30px 100px #0005;opacity:0;transform:translateY(18px) scale(.94);transition:opacity .24s ease,transform .24s ease;overflow:auto;overscroll-behavior:contain}
+.chart-viewer.is-visible{opacity:1;transform:translateY(0) scale(1)}
+.chart-viewer::backdrop{background:rgba(20,29,42,.72);backdrop-filter:blur(5px)}
+.chart-viewer-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 24px;border-bottom:1px solid #e5e7eb;position:sticky;top:0;background:#fff;z-index:1}
+.chart-viewer-head h3{font-size:19px;margin:0}
+.chart-viewer-close{display:grid;place-items:center;width:42px;height:42px;flex-shrink:0;border:1px solid #e5ddd7;border-radius:50%;background:#f8f7f4;color:#253345;cursor:pointer;font-size:27px;line-height:1}
+.chart-viewer-close:hover{background:#f3e4df;color:#a73424}
+.chart-viewer-close:focus-visible{outline:3px solid #c2412d;outline-offset:3px}
+.chart-viewer-content{padding:18px 28px 26px}
+.chart-viewer-content .pilot-chart{border:0;padding:0;background:transparent;margin:0}
+.chart-viewer-content svg{width:100%;height:auto;display:block;max-height:none}
+.chart-viewer-content .chart-legend{margin:0 0 12px}
+.chart-viewer-note{font-size:12px;color:#667085;margin-top:16px;text-align:center}
+@media(max-width:600px){.chart-viewer{width:96vw;max-width:96vw;border-radius:14px}.chart-viewer-content{padding:16px 12px}.chart-viewer-head{padding:12px 16px}.chart-viewer-head h3{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.pilot-chart[data-zoom],.chart-viewer{transition:none}.pilot-chart[data-zoom]:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -205,39 +239,30 @@ footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
   <p class="intro" style="margin-top:24px"><b>Pilot status:</b> the eight-person pilot has been completed. The protocol above describes the intended procedure; the results below document the observed outcomes and implementation differences.</p>
 
 <div id="pilot-results" aria-labelledby="pilot-results-title" class="pilot-results">
-    <h3 id="pilot-results-title" class="results-title">Pilot study results</h3>
-    <p class="intro">Eight volunteers from AIAT First-Year Class 1 completed 32 campus-information tasks, with 16 task records per condition. Four participants also took part in short interviews. The following results are descriptive findings from the completed pilot, reported in the supplied <i>eHall AI Pilot Study Data Analysis Report (EN), Version 2</i>; no significance tests were conducted.</p>
-    <div class="grid">
-      <div class="card"><div class="card-number">EFFICIENCY · MEDIAN TASK TIME</div><h3>165 s vs 180 s</h3><p>eHall AI versus traditional search. Six of eight participants recorded a lower total response time with AI; the median paired difference was −86.5 seconds (AI minus traditional).</p></div>
-      <div class="card"><div class="card-number">ACCURACY · MEAN TASK SCORE</div><h3>2.12 vs 1.44 / 3</h3><p>eHall AI versus traditional search. Full success—three points within the time limit—was achieved in 7/16 AI tasks and 5/16 traditional-search tasks.</p></div>
-      <div class="card"><div class="card-number">EXPERIENCE · SATISFACTION</div><h3>4.19 vs 2.44 / 5</h3><p>eHall AI versus traditional search. AI received higher mean ratings on all four experience items, although its objective performance varied across tasks.</p></div>
-    </div>
-    <div class="baseline-box"><h3>The advantage depends on the task</h3><p>AI was faster and more accurate on A1 (Academic Affairs information) and B2 (electronic enrolment certificates). Traditional search was faster and more accurate on B1 (library contact channels). A2 (discussion-room rules) had similar response times, with a slightly higher mean score under traditional search. The pilot does not support a universal claim that AI performs better.</p></div>
-    <h3 class="result-heading">Task-level performance</h3>
-<div class="matrix"><table><caption class="small">Four participants per task and condition. Timing includes AI responses, follow-ups, and webpage loading.</caption><thead><tr><th scope="col">Task</th><th scope="col">Condition</th><th scope="col">Limit (s)</th><th scope="col">Median time (s)</th><th scope="col">Timeouts / 4</th><th scope="col">Mean score / 3</th><th scope="col">Full successes / 4</th><th scope="col">Mean confidence / 5</th></tr></thead><tbody><tr><td>A1</td><td>eHall AI</td><td>180</td><td>53.5</td><td>0</td><td>2.75</td><td>3</td><td>4.25</td></tr><tr><td>A1</td><td>Traditional</td><td>180</td><td>180</td><td>3</td><td>0.25</td><td>0</td><td>1.0</td></tr><tr><td>A2</td><td>eHall AI</td><td>300</td><td>200</td><td>1</td><td>1.75</td><td>1</td><td>4.25</td></tr><tr><td>A2</td><td>Traditional</td><td>300</td><td>209</td><td>2</td><td>2.0</td><td>2</td><td>4.5</td></tr><tr><td>B1</td><td>eHall AI</td><td>180</td><td>178.5</td><td>2</td><td>1.25</td><td>0</td><td>3.5</td></tr><tr><td>B1</td><td>Traditional</td><td>180</td><td>118.5</td><td>1</td><td>2.25</td><td>2</td><td>3.5</td></tr><tr><td>B2</td><td>eHall AI</td><td>300</td><td>210.5</td><td>1</td><td>2.75</td><td>3</td><td>4.5</td></tr><tr><td>B2</td><td>Traditional</td><td>300</td><td>300</td><td>3</td><td>1.25</td><td>1</td><td>2.75</td></tr></tbody></table></div><p class="small" style="margin-top:14px">Thirteen of the 32 records reached the time limit: nine under traditional search and four under AI. These are capped response times, not successful completion times. Their underlying completion times are unknown, so both individual times and summary medians require caution.</p>
-    <h3 class="result-heading">Subjective experience</h3>
-    <p class="intro">Ratings were harmonised to one mean per participant and condition because five participants answered per task and three per round. Each condition therefore has eight participant-level ratings.</p><div class="matrix"><table><caption class="small">1 = Strongly disagree; 5 = Strongly agree. Items are reported separately, not as a validated composite score.</caption><thead><tr><th scope="col">Experience item (1–5)</th><th scope="col">eHall AI mean</th><th scope="col">Traditional mean</th></tr></thead><tbody><tr><td>Perceived efficiency</td><td>4.25</td><td>2.50</td></tr><tr><td>Comprehensibility</td><td>4.31</td><td>3.19</td></tr><tr><td>Overall satisfaction</td><td>4.19</td><td>2.44</td></tr><tr><td>Willingness to reuse</td><td>4.19</td><td>2.56</td></tr></tbody></table></div><p class="small" style="margin-top:14px">All eight participants rated AI higher on efficiency; seven rated it higher on satisfaction and willingness to reuse. Positive ratings also occurred in rounds containing B1, illustrating that perceived experience and measured answer quality can diverge.</p>
-    <h3 class="result-heading">Confidence and source checking</h3>
-    <div class="variables">
-      <div class="variable"><div class="iv">CONFIDENCE</div><h3>4.12 vs 2.94 / 5</h3><p>Mean answer confidence was higher with AI than with traditional search. The report describes cases of high confidence without full marks, suggesting a possible over-trust risk. Confidence and rubric scores measure different things; these summaries alone do not establish formal calibration.</p></div>
-      <div class="variable"><div class="iv">OFFICIAL-SOURCE ACCESS</div><h3>8 of 16 AI tasks</h3><p>An official source was opened in half of the AI tasks. The collected verification field did not reliably distinguish opening a page from checking an answer, so this is not a confirmed verification rate. No clear score relationship was observed. One interviewee reported difficulty locating an official page when attempting to verify.</p></div>
-    </div>
-    <h3 class="result-heading">Participant-level paired results</h3>
-    <p class="intro">Each person completed two tasks with each method, using different task sets. These paired totals are indicative because the two sets were not equally difficult.</p><div class="matrix"><table><caption class="small">Differences = AI minus traditional. Negative time differences favour AI. Totals include time-limited records.</caption><thead><tr><th scope="col">Anonymous ID</th><th scope="col">AI time (s)</th><th scope="col">Traditional time (s)</th><th scope="col">Time difference (s)</th><th scope="col">AI score / 6</th><th scope="col">Traditional score / 6</th><th scope="col">Score difference</th></tr></thead><tbody><tr><td>A01</td><td>326</td><td>480</td><td>−154</td><td>5</td><td>2</td><td>+3</td></tr><tr><td>A02</td><td>442</td><td>480</td><td>−38</td><td>4</td><td>0</td><td>+4</td></tr><tr><td>B01</td><td>189</td><td>480</td><td>−291</td><td>6</td><td>2</td><td>+4</td></tr><tr><td>B02</td><td>220</td><td>327</td><td>−107</td><td>4</td><td>4</td><td>0</td></tr><tr><td>C01</td><td>297</td><td>420</td><td>−123</td><td>4</td><td>5</td><td>−1</td></tr><tr><td>C02</td><td>350</td><td>416</td><td>−66</td><td>6</td><td>3</td><td>+3</td></tr><tr><td>D01</td><td>319</td><td>195</td><td>+124</td><td>4</td><td>4</td><td>0</td></tr><tr><td>D02</td><td>480</td><td>240</td><td>+240</td><td>3</td><td>3</td><td>0</td></tr></tbody></table></div>
-    <h3 class="result-heading">What the four interviews explain</h3>
-    <p class="small">Interview coverage: A02, C02, D01, and D02. Themes below paraphrase the report’s anonymised interview findings.</p>
-    <div class="grid">
-      <div class="card"><div class="card-number">NAVIGATION</div><h3>Finding an entry point is difficult</h3><p>Three interviewees identified A1 as the hardest task. Unclear website navigation made official information difficult to locate; AI could bypass some of that navigation effort.</p></div>
-      <div class="card"><div class="card-number">TRUST</div><h3>Specific answers feel credible</h3><p>Concrete entry points and exact times often encouraged trust without checking. This offers a possible explanation for high confidence in incomplete AI answers.</p></div>
-      <div class="card"><div class="card-number">VERIFICATION</div><h3>Checking is often conditional</h3><p>Some interviewees checked only when information seemed vague; habitual verification was not universal. Source accessibility also affected whether checking was possible.</p></div>
-      <div class="card"><div class="card-number">METHOD PREFERENCE</div><h3>Familiarity changes the choice</h3><p>Traditional search could feel more direct when participants already knew where to look. AI appeared more useful when the service route was unfamiliar.</p></div>
-      <div class="card"><div class="card-number">ANSWER COMPLETENESS</div><h3>Missing details cost points</h3><p>The report attributes many AI score losses to omitted contact details, booking limits, usage duration, or fee information, rather than clearly incorrect facts.</p></div>
-      <div class="card"><div class="card-number">PRODUCT FEEDBACK</div><h3>Make answers easier to check</h3><p>Requested improvements included direct source links, more complete and specific answers, faster responses, and a frequently asked questions list.</p></div>
-    </div>
-    <h3 class="result-heading">Limitations and changes for the main study</h3>
-<div class="matrix"><table><caption class="small">Differences between the intended protocol above and actual implementation are reported explicitly.</caption><thead><tr><th scope="col">Observed issue</th><th scope="col">Implication</th><th scope="col">Planned improvement</th></tr></thead><tbody><tr><td>Eight participants from one class; four interviews</td><td>Small, local sample; limited qualitative coverage and generalisability.</td><td>Keep conclusions descriptive and broaden interview coverage.</td></tr><tr><td>Actual round order was not retained in the records</td><td>The report states that all four allocation sequences ran, but practice and fatigue effects cannot be reconstructed.</td><td>Record allocated sequence and actual round for every task.</td></tr><tr><td>Questionnaires completed per task or per round</td><td>Ratings required harmonisation into per-condition participant means.</td><td>Administer the same questionnaire once after each round.</td></tr><tr><td>13 task records reached the time limit</td><td>Capped times do not reveal actual completion time.</td><td>Keep outcome status explicit and report capped or incomplete tasks separately.</td></tr><tr><td>Page opening and verification were merged; follow-up counts missing</td><td>Natural verification and prompting strategies cannot be measured reliably.</td><td>Separate page opening from explicit answer checking and record AI follow-up counts.</td></tr><tr><td>B1 exposed incomplete multi-channel answers</td><td>Overall averages can hide important task-specific weaknesses.</td><td>Retain B1, inspect actual AI output, and recognise verified equivalent official contact channels in scoring.</td></tr><tr><td>Recording and scoring safeguards need strengthening</td><td>Entry errors or ambiguous task endings can reduce data quality.</td><td>Validate score ranges (0–3), record ending status, and track answer completeness explicitly.</td></tr></tbody></table></div>
-    <div class="baseline-box"><h3>What we take forward</h3><p>The pilot supports the feasibility of the two-condition design and identifies useful task differences. AI improved results on some tasks and received more positive experience ratings, but performed worse on B1. The main study should strengthen recording, questionnaire consistency, answer-completeness assessment, and source-verification measures before drawing broader conclusions.</p></div>
-    <p class="small" style="margin-top:20px">Source: <i>eHall AI Campus Information Lookup Pilot Study at XJTLU SIP Campus: Data Analysis Report</i>, Version 2, Sections 2–7. The website presents reported summaries and anonymised participant-level totals; it does not publish consent records, personal information, or full recordings.</p>
+<h3 id="pilot-results-title" class="results-title">Pilot study results</h3>
+<p class="intro">Eight volunteers randomly selected from AIAT First-Year Class 1 completed 32 tasks: 16 with eHall AI and 16 with traditional search. Four participants were interviewed. These preliminary findings are descriptive; no statistical significance tests were conducted.</p>
+<div class="grid">
+<div class="card"><div class="card-number">MEDIAN RESPONSE TIME</div><h3>165 s vs 180 s</h3><p>eHall AI versus traditional search. Six of eight participants recorded lower total response times with AI.</p></div>
+<div class="card"><div class="card-number">MEAN ANSWER SCORE</div><h3>2.12 vs 1.44 / 3</h3><p>eHall AI versus traditional search. Performance varied substantially across tasks.</p></div>
+<div class="card"><div class="card-number">OVERALL SATISFACTION</div><h3>4.19 vs 2.44 / 5</h3><p>eHall AI versus traditional search. AI received higher mean ratings on all four experience items.</p></div>
+</div>
+<div class="chart-legend" aria-label="Chart legend"><span><i></i>eHall AI</span><span><i class="traditional"></i>Traditional search</span></div>
+<div class="pilot-chart-grid"><figure class="pilot-chart "><h4>Median response time by task</h4><p class="small">Seconds · lower is better</p><svg viewBox="0 0 720 452" role="img" aria-label="Median response time by task"><title>Median response time by task</title><desc>A1: eHall AI 53.5, traditional search 180; A2: eHall AI 200, traditional search 209; B1: eHall AI 178.5, traditional search 118.5; B2: eHall AI 210.5, traditional search 300</desc><line x1="195.0" y1="32" x2="195.0" y2="408" stroke="#e5e7eb"/><text x="195.0" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">0</text><line x1="285.6" y1="32" x2="285.6" y2="408" stroke="#e5e7eb"/><text x="285.6" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">60</text><line x1="376.20000000000005" y1="32" x2="376.20000000000005" y2="408" stroke="#e5e7eb"/><text x="376.20000000000005" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">120</text><line x1="466.8" y1="32" x2="466.8" y2="408" stroke="#e5e7eb"/><text x="466.8" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">180</text><line x1="557.4000000000001" y1="32" x2="557.4000000000001" y2="408" stroke="#e5e7eb"/><text x="557.4000000000001" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">240</text><line x1="648.0" y1="32" x2="648.0" y2="408" stroke="#e5e7eb"/><text x="648.0" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">300</text><text x="179" y="73" text-anchor="end" font-family="Arial" font-size="15" fill="#263445">A1</text><rect x="195" y="48" width="80.78500000000001" height="22" rx="3" fill="#c2412d"/><text x="283.785" y="64" font-family="Arial" font-size="15" fill="#263445">53.5</text><rect x="195" y="77" width="271.8" height="22" rx="3" fill="#526a83"/><text x="474.8" y="93" font-family="Arial" font-size="15" fill="#263445">180</text><text x="179" y="161" text-anchor="end" font-family="Arial" font-size="15" fill="#263445">A2</text><rect x="195" y="136" width="302.0" height="22" rx="3" fill="#c2412d"/><text x="505.0" y="152" font-family="Arial" font-size="15" fill="#263445">200</text><rect x="195" y="165" width="315.59" height="22" rx="3" fill="#526a83"/><text x="518.5899999999999" y="181" font-family="Arial" font-size="15" fill="#263445">209</text><text x="179" y="249" text-anchor="end" font-family="Arial" font-size="15" fill="#263445">B1</text><rect x="195" y="224" width="269.53499999999997" height="22" rx="3" fill="#c2412d"/><text x="472.53499999999997" y="240" font-family="Arial" font-size="15" fill="#263445">178.5</text><rect x="195" y="253" width="178.935" height="22" rx="3" fill="#526a83"/><text x="381.935" y="269" font-family="Arial" font-size="15" fill="#263445">118.5</text><text x="179" y="337" text-anchor="end" font-family="Arial" font-size="15" fill="#263445">B2</text><rect x="195" y="312" width="317.855" height="22" rx="3" fill="#c2412d"/><text x="520.855" y="328" font-family="Arial" font-size="15" fill="#263445">210.5</text><rect x="195" y="341" width="453.0" height="22" rx="3" fill="#526a83"/><text x="656.0" y="357" font-family="Arial" font-size="15" fill="#263445">300</text></svg><figcaption>Four participants per task and condition. A1/B1: 180-second limit; A2/B2: 300-second limit. Values include capped responses.</figcaption></figure><figure class="pilot-chart "><h4>Mean answer score by task</h4><p class="small">Rubric score out of 3 · higher is better</p><svg viewBox="0 0 720 452" role="img" aria-label="Mean answer score by task"><title>Mean answer score by task</title><desc>A1: eHall AI 2.75, traditional search 0.25; A2: eHall AI 1.75, traditional search 2; B1: eHall AI 1.25, traditional search 2.25; B2: eHall AI 2.75, traditional search 1.25</desc><line x1="195.0" y1="32" x2="195.0" y2="408" stroke="#e5e7eb"/><text x="195.0" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">0</text><line x1="346.0" y1="32" x2="346.0" y2="408" stroke="#e5e7eb"/><text x="346.0" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">1</text><line x1="497.0" y1="32" x2="497.0" y2="408" stroke="#e5e7eb"/><text x="497.0" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">2</text><line x1="648.0" y1="32" x2="648.0" y2="408" stroke="#e5e7eb"/><text x="648.0" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">3</text><text x="179" y="73" text-anchor="end" font-family="Arial" font-size="15" fill="#263445">A1</text><rect x="195" y="48" width="415.25" height="22" rx="3" fill="#c2412d"/><text x="618.25" y="64" font-family="Arial" font-size="15" fill="#263445">2.75</text><rect x="195" y="77" width="37.75" height="22" rx="3" fill="#526a83"/><text x="240.75" y="93" font-family="Arial" font-size="15" fill="#263445">0.25</text><text x="179" y="161" text-anchor="end" font-family="Arial" font-size="15" fill="#263445">A2</text><rect x="195" y="136" width="264.25" height="22" rx="3" fill="#c2412d"/><text x="467.25" y="152" font-family="Arial" font-size="15" fill="#263445">1.75</text><rect x="195" y="165" width="302.0" height="22" rx="3" fill="#526a83"/><text x="505.0" y="181" font-family="Arial" font-size="15" fill="#263445">2.00</text><text x="179" y="249" text-anchor="end" font-family="Arial" font-size="15" fill="#263445">B1</text><rect x="195" y="224" width="188.75" height="22" rx="3" fill="#c2412d"/><text x="391.75" y="240" font-family="Arial" font-size="15" fill="#263445">1.25</text><rect x="195" y="253" width="339.75" height="22" rx="3" fill="#526a83"/><text x="542.75" y="269" font-family="Arial" font-size="15" fill="#263445">2.25</text><text x="179" y="337" text-anchor="end" font-family="Arial" font-size="15" fill="#263445">B2</text><rect x="195" y="312" width="415.25" height="22" rx="3" fill="#c2412d"/><text x="618.25" y="328" font-family="Arial" font-size="15" fill="#263445">2.75</text><rect x="195" y="341" width="188.75" height="22" rx="3" fill="#526a83"/><text x="391.75" y="357" font-family="Arial" font-size="15" fill="#263445">1.25</text></svg><figcaption>Each answer was scored against three official key points. Four participants per task and condition.</figcaption></figure><figure class="pilot-chart wide"><h4>User experience ratings</h4><p class="small">Mean rating on a 1–5 scale · higher is better</p><svg viewBox="0 0 720 452" role="img" aria-label="User experience ratings"><title>User experience ratings</title><desc>Perceived efficiency: eHall AI 4.25, traditional search 2.5; Comprehensibility: eHall AI 4.31, traditional search 3.19; Satisfaction: eHall AI 4.19, traditional search 2.44; Willingness to reuse: eHall AI 4.19, traditional search 2.56</desc><line x1="195.0" y1="32" x2="195.0" y2="408" stroke="#e5e7eb"/><text x="195.0" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">0</text><line x1="285.6" y1="32" x2="285.6" y2="408" stroke="#e5e7eb"/><text x="285.6" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">1</text><line x1="376.20000000000005" y1="32" x2="376.20000000000005" y2="408" stroke="#e5e7eb"/><text x="376.20000000000005" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">2</text><line x1="466.8" y1="32" x2="466.8" y2="408" stroke="#e5e7eb"/><text x="466.8" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">3</text><line x1="557.4000000000001" y1="32" x2="557.4000000000001" y2="408" stroke="#e5e7eb"/><text x="557.4000000000001" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">4</text><line x1="648.0" y1="32" x2="648.0" y2="408" stroke="#e5e7eb"/><text x="648.0" y="434" text-anchor="middle" font-family="Arial" font-size="14" fill="#586475">5</text><text x="179" y="73" text-anchor="end" font-family="Arial" font-size="15" fill="#263445">Perceived efficiency</text><rect x="195" y="48" width="385.05" height="22" rx="3" fill="#c2412d"/><text x="588.05" y="64" font-family="Arial" font-size="15" fill="#263445">4.25</text><rect x="195" y="77" width="226.5" height="22" rx="3" fill="#526a83"/><text x="429.5" y="93" font-family="Arial" font-size="15" fill="#263445">2.50</text><text x="179" y="161" text-anchor="end" font-family="Arial" font-size="15" fill="#263445">Comprehensibility</text><rect x="195" y="136" width="390.48599999999993" height="22" rx="3" fill="#c2412d"/><text x="593.4859999999999" y="152" font-family="Arial" font-size="15" fill="#263445">4.31</text><rect x="195" y="165" width="289.014" height="22" rx="3" fill="#526a83"/><text x="492.014" y="181" font-family="Arial" font-size="15" fill="#263445">3.19</text><text x="179" y="249" text-anchor="end" font-family="Arial" font-size="15" fill="#263445">Satisfaction</text><rect x="195" y="224" width="379.61400000000003" height="22" rx="3" fill="#c2412d"/><text x="582.614" y="240" font-family="Arial" font-size="15" fill="#263445">4.19</text><rect x="195" y="253" width="221.064" height="22" rx="3" fill="#526a83"/><text x="424.06399999999996" y="269" font-family="Arial" font-size="15" fill="#263445">2.44</text><text x="179" y="337" text-anchor="end" font-family="Arial" font-size="15" fill="#263445">Willingness to reuse</text><rect x="195" y="312" width="379.61400000000003" height="22" rx="3" fill="#c2412d"/><text x="582.614" y="328" font-family="Arial" font-size="15" fill="#263445">4.19</text><rect x="195" y="341" width="231.936" height="22" rx="3" fill="#526a83"/><text x="434.93600000000004" y="357" font-family="Arial" font-size="15" fill="#263445">2.56</text></svg><figcaption>Eight participant-level means per condition. Five participants answered per task and three per round; ratings were harmonised to one mean per person and condition. The bar axis starts at zero; possible ratings range from 1 to 5.</figcaption></figure></div>
+<p class="small">Task key: A1 — Academic Affairs information; A2 — discussion-room rules; B1 — library contact channels; B2 — electronic enrolment certificates.</p>
+<div class="baseline-box"><h3>What the charts show</h3><p>eHall AI was faster and scored higher on A1 and B2. Traditional search performed better on B1, while A2 showed similar response times and a slightly higher score with traditional search. AI’s advantage therefore depended on the task. More positive experience ratings did not always correspond to better answer quality.</p></div>
+<h3 class="result-heading">Confidence, source checking, and interview insights</h3>
+<div class="variables">
+<div class="variable"><div class="iv">CONFIDENCE &amp; CHECKING</div><h3>High confidence, limited source access</h3><p>Mean AI answer confidence was 4.12/5, while the achieved score rate was about 71%. These are different measures, but high confidence in incomplete answers suggests possible over-trust. An official source was opened in 8 of 16 AI tasks; opening a page does not necessarily mean the answer was verified.</p></div>
+<div class="variable"><div class="iv">FOUR INTERVIEWS</div><h3>Clearer routes and checkable answers</h3><p>Three interviewees identified A1 as the hardest task because official entry points were unclear. Specific answers often felt credible, and checking was usually prompted by uncertainty. Participants requested direct source links, more complete answers, faster responses, and a frequently asked questions list.</p></div>
+</div>
+<h3 class="result-heading">Limitations and improvements for the main study</h3>
+<ul class="pilot-takeaways">
+<li><b>Small sample:</b> eight participants from one class and four interviews limit generalisability. Broaden interview coverage in the main study.</li>
+<li><b>Time limits:</b> 13 of 32 responses were capped (AI: 4; traditional: 9). These are recorded response times, not known completion times; interpret timing comparisons cautiously.</li>
+<li><b>Consistent records:</b> actual task rounds were not retained and questionnaire timing varied. Record actual round order and administer the questionnaire once after each round.</li>
+<li><b>Better verification measures:</b> separately record official-page opening, explicit answer checking, and AI follow-up counts. Retain B1 and check equivalent official contact channels when refining the scoring rubric.</li>
+</ul>
+<p class="small" style="margin-top:24px">Source: supplied <i>eHall AI Campus Information Lookup Pilot Study Data Analysis Report</i> (document heading: Version 3), Results §§3.1–3.4 and Conclusions. Values are reproduced from the report; findings are preliminary and descriptive.</p>
 </div>
 </section>
 
@@ -408,7 +433,7 @@ footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
     <div class="card"><div class="card-number">05</div><h3>Predefine analysis</h3><p>Specify primary outcomes, statistical tests, treatment of incomplete tasks, and any multiple-comparison procedures.</p></div>
     <div class="card"><div class="card-number">06</div><h3>Report transparently</h3><p>All tables, figures, and conclusions must be traceable to collected data. Distinguish planned hypotheses from observed results.</p></div>
   </div>
-  <div class="baseline-box"><h3>Current project status</h3><p>The eight-person pilot has been completed, with 32 task records and four interviews documented in the supplied Version 2 analysis report. The results within Pilot Study Design report these descriptive findings and the changes needed before the main study. The broader main experiment and follow-up research remain proposed; pilot findings should not be presented as main-study results.</p></div>
+  <div class="baseline-box"><h3>Current project status</h3><p>The eight-person pilot has been completed, with 32 task records and four interviews documented in the supplied updated analysis report. The results within Pilot Study Design report these descriptive findings and the changes needed before the main study. The broader main experiment and follow-up research remain proposed; pilot findings should not be presented as main-study results.</p></div>
 </section>
 
 <section id="team" class="light">
@@ -423,5 +448,87 @@ footer{background:#1f2937;color:white;padding:28px 8%;text-align:center}
   </div>
 </section>
 <footer>eHall AI User Experience Evaluation · XJTLU · HCI Research Project</footer>
+
+<dialog id="chart-viewer" class="chart-viewer" aria-labelledby="chart-viewer-title" aria-describedby="chart-viewer-help">
+  <div class="chart-viewer-head"><h3 id="chart-viewer-title">Chart detail</h3><button type="button" class="chart-viewer-close" aria-label="Close enlarged chart">×</button></div>
+  <div class="chart-viewer-content"></div>
+</dialog>
+<script>
+(() => {
+  const viewer = document.getElementById('chart-viewer');
+  if (!viewer || typeof viewer.showModal !== 'function') return;
+  const content = viewer.querySelector('.chart-viewer-content');
+  const title = document.getElementById('chart-viewer-title');
+  const closeButton = viewer.querySelector('.chart-viewer-close');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let opener = null;
+  let closing = false;
+  let previousOverflow = '';
+  function closeViewer() {
+    if (closing || !viewer.open) return;
+    closing = true;
+    viewer.classList.remove('is-visible');
+    window.setTimeout(() => {
+      viewer.close();
+      document.body.style.overflow = previousOverflow;
+      content.replaceChildren();
+      if (opener) opener.focus({preventScroll:true});
+      closing = false;
+    }, reducedMotion.matches ? 0 : 240);
+  }
+  document.querySelectorAll('#pilot-results .pilot-chart').forEach((chart) => {
+    const name = chart.querySelector('h4').textContent;
+    chart.dataset.zoom = 'true';
+    chart.tabIndex = 0;
+    chart.setAttribute('role', 'button');
+    chart.setAttribute('aria-haspopup', 'dialog');
+    chart.setAttribute('aria-controls', 'chart-viewer');
+    chart.setAttribute('aria-label', 'Enlarge chart: ' + name);
+    const hint = document.createElement('span');
+    hint.className = 'chart-zoom-hint';
+    hint.textContent = '⤢ Click to enlarge';
+    hint.setAttribute('aria-hidden', 'true');
+    chart.append(hint);
+    function openViewer() {
+      if (viewer.open || closing) return;
+      opener = chart;
+      title.textContent = name;
+      const clone = chart.cloneNode(true);
+      ['data-zoom','tabindex','role','aria-haspopup','aria-controls','aria-label'].forEach(a => clone.removeAttribute(a));
+      clone.querySelector('.chart-zoom-hint').remove();
+      const legend = document.querySelector('#pilot-results > .chart-legend').cloneNode(true);
+      const help = document.createElement('p');
+      help.id = 'chart-viewer-help';
+      help.className = 'chart-viewer-note';
+      help.textContent = 'Press Esc, click outside the chart, or use the close button to return.';
+      content.replaceChildren(legend, clone, help);
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      viewer.showModal();
+      closeButton.focus({preventScroll:true});
+      requestAnimationFrame(() => requestAnimationFrame(() => viewer.classList.add('is-visible')));
+    }
+    chart.addEventListener('click', openViewer);
+    chart.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openViewer();
+      }
+    });
+  });
+  closeButton.addEventListener('click', closeViewer);
+  viewer.addEventListener('cancel', event => { event.preventDefault(); closeViewer(); });
+  let backdropPress = false;
+  function outside(event) {
+    const rect = viewer.getBoundingClientRect();
+    return event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+  }
+  viewer.addEventListener('pointerdown', event => { backdropPress = event.target === viewer && outside(event); });
+  viewer.addEventListener('click', event => {
+    if (backdropPress && event.target === viewer && outside(event)) closeViewer();
+    backdropPress = false;
+  });
+})();
+</script>
 </body>
 </html>
